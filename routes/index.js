@@ -15,13 +15,14 @@ router.get("/register", function (req, res) {
 
 //sign up logic
 router.post("/register", function (req, res) {
+
 	var newUser = new User({ username: req.body.username });
 	User.register(newUser, req.body.password, function (err, user) {
 		if (err) {
 			req.flash("error", err.message);
 			return res.render("register");
 		}
-		passport.authenticate("local", req, res, function () {
+		passport.authenticate("local")(req, res, function () {
 			req.flash("Successfully registered!\nWelcome to the website!");
 			res.redirect("/posts");
 		});

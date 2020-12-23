@@ -1,6 +1,6 @@
 <%- include ("../partials/header") %>
                     <h1><%=post.name%></h1>
-<img src="<%=post.image%> alt="image">
+<img src="<%=post.image%>" alt="image">
                     <p><%= post.description %></p>
                     <p>
                         <em>Submitted By <%= post.author.username %></em>
@@ -17,8 +17,7 @@
                 <hr>
                 <% post.comments.forEach(function(comment){ %>
                             <strong><%= comment.author.username %></strong>
-                            <img src="<%=post.image%>" alt="image">
-                                                        <p>
+                            <p>
                                 <%= comment.text %> 
                             </p>
                         <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
