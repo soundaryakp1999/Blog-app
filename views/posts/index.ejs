@@ -1,0 +1,18 @@
+<%- include ("../partials/header") %>
+                <a href="/posts/new">Write a New Post</a>
+<%  posts.forEach(function(post){ %>
+
+    <h1><%=post.name%></h1>
+    <p>
+        by <%=post.author.username%>
+        <br>
+    <%=post.description.substring(0, 100) + " ..."%>
+    <a href="/posts/<%=post._id%>">Read More</a>
+    </p>
+
+
+    <% }) %>
+
+ 
+
+<%- include ("../partials/footer") %>
