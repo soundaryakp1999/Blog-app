@@ -1,18 +1,29 @@
 <%- include ("../partials/header") %>
-                <a href="/posts/new">Write a New Post</a>
-<%  posts.forEach(function(post){ %>
 
-    <h1><%=post.name%></h1>
-    <p>
-        by <%=post.author.username%>
+<div class="container">
+    <div class="jumbotron">
+        <h1>My Blogs</h1>
         <br>
-    <%=post.description.substring(0, 100) + " ..."%>
-    <a href="/posts/<%=post._id%>">Read More</a>
-    </p>
+        <a class="btn btn-success" href="/posts/new"> New Blog</a>
+    </div>
 
-
-    <% }) %>
-
- 
+    <div id="blogs" class="row">
+        <%  posts.forEach(function(post){ %>
+            <div class="thumbnail">
+                <div class="info">
+                    <h1><%=post.name%></h1>
+                    <p>
+                        <span> by <%=post.author.username%> <br> </span>
+                        <%=post.description.substring(0, 100) + " ..."%>
+                        <a href="/posts/<%=post._id%>">Read More</a>
+                    </p>
+                </div>
+                <img src="<%= post.image %>" alt="image for blog">
+            </div>
+        <% }) %>
+    </div>
+    
+    
+</div>
 
 <%- include ("../partials/footer") %>
